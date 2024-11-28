@@ -1,9 +1,14 @@
-import { Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from 'react-native';
 
-export default function Avatar({ source }) {
-  return <Image source={source} style={styles.image} />;
+export default function Avatar({ size = 100, source }) {
+  return (
+    <View style={styles.container}>
+      <Image source={source} style={{ ...styles.image, width: size, height: size }} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-  image: { width: 100, height: 100, borderRadius: 50 },
+  container: { justifyContent: 'center', alignItems: 'center' },
+  image: { borderRadius: 50, resizeMode: 'cover' },
 });

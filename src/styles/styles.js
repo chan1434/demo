@@ -1,7 +1,8 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-export const globalStyles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 20 },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
-  input: { borderWidth: 1, padding: 10, marginBottom: 20, borderRadius: 5 },
+export default StyleSheet.create({
+  screenContainer: { flex: 1, backgroundColor: '#F5F5F5' },
+  textPrimary: { fontSize: 18, color: '#333' },
+  buttonPrimary: { backgroundColor: '#007AFF', padding: 10, borderRadius: 8 },
+  buttonTextPrimary: { color: '#FFF', textAlign: 'center' },
 });

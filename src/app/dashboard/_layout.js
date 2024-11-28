@@ -1,18 +1,14 @@
-import { useAuth } from "../../context/AuthContext";
-import { Tabs, Redirect } from "expo-router";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Text } from 'react-native';
+import Tabs from './(tabs)/_layout';
+
+const Drawer = createDrawerNavigator();
 
 export default function DashboardLayout() {
-  const { user } = useAuth();
-
-  if (!user) {
-    // Redirect to sign-in if not authenticated
-    return <Redirect href="/signin" />;
-  }
-
   return (
-    <Tabs>
-      <Tabs.Screen name="profile" options={{ title: "Profile" }} />
-      <Tabs.Screen name="account-settings" options={{ title: "Account Settings" }} />
-    </Tabs>
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={Tabs} />
+      <Drawer.Screen name="Settings" component={() => <Text>Settings Page</Text>} />
+    </Drawer.Navigator>
   );
 }

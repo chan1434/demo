@@ -1,19 +1,24 @@
-import { Link } from "expo-router";
-import { View, Text, StyleSheet } from "react-native";
+import { useRouter } from 'expo-router';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-export default function Home() {
+export default function Index() {
+  const router = useRouter();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the App</Text>
-      <Link href="/signin" style={styles.link}>Sign In</Link>
-      <Link href="/signup" style={styles.link}>Sign Up</Link>
-      <Link href="/forgotpassword" style={styles.link}>Forgot Password?</Link>
-    </View>
+    <SafeAreaProvider>
+      <StatusBar style="auto" />
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome to DemoApp</Text>
+        <Button title="Sign In" onPress={() => router.push('/Signin')} />
+        <Button title="Sign Up" onPress={() => router.push('/Signup')} />
+      </View>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
-  link: { fontSize: 18, color: "blue", marginTop: 10 },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
 });

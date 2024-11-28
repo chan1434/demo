@@ -1,22 +1,18 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function Drawer({ items, onItemSelect }) {
+export default function CustomDrawer(props) {
   return (
-    <View style={styles.container}>
-      {items.map((item, index) => (
-        <TouchableOpacity
-          key={index}
-          style={styles.item}
-          onPress={() => onItemSelect(item)}>
-          <Text style={styles.itemText}>{item.label}</Text>
-        </TouchableOpacity>
-      ))}
-    </View>
+    <DrawerContentScrollView {...props}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Demo App</Text>
+      </View>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 10, backgroundColor: "#f8f8f8" },
-  item: { padding: 15, borderBottomWidth: 1, borderColor: "#ccc" },
-  itemText: { fontSize: 18 },
+  header: { padding: 20, backgroundColor: '#007AFF', alignItems: 'center' },
+  headerText: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
 });
